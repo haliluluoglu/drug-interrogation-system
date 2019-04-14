@@ -26,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        hasta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, HastaLoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
         eczaci.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
