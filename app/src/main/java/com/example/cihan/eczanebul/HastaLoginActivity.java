@@ -19,7 +19,7 @@ public class HastaLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HastaLoginActivity.this, HastaActivity.class);
-                startActivity(intent);
+                startActivity(intent);//bu bir denemedir
             }
         });
     }
