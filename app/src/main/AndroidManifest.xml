@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".HastaActivity"></activity>
-        <activity android:name=".HastaLoginActivity" />
+        <activity android:name=".HastaGirisActivity" />
         <activity android:name=".EczaneActivity" />
         <activity android:name=".DoktorActivity" />
-        <activity android:name=".EczaneLoginActivity" />
+        <activity android:name=".EczaneGirisActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DoktorLoginActivity" />
+        <activity android:name=".DoktorGirisActivity" />
     </application>
 
 </manifest>

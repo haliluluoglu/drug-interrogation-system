@@ -4,50 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HastaLoginActivity">
+    tools:context="com.example.cihan.eczanebul.DoktorGirisActivity">
 
     <EditText
-        android:id="@+id/tcNumaraText"
+        android:id="@+id/tescilNoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="300dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="T.C kimlik numarası"
+        android:hint="tescilNo"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/tcSifreText"
+        android:id="@+id/tescilSifreText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="43dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Şifre"
-        android:inputType="textPassword"
+        android:hint="şifre"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tcNumaraText" />
+        app:layout_constraintTop_toBottomOf="@+id/tescilNoText" />
 
     <Button
-        android:id="@+id/tcGirisButon"
+        android:id="@+id/doktorGirisButon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="GİRİŞ"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Giriş Yap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tcSifreText"
-        app:layout_constraintVertical_bias="0.223" />
+        app:layout_constraintTop_toBottomOf="@+id/tescilSifreText" />
+
 </android.support.constraint.ConstraintLayout>

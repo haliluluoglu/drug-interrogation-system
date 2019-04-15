@@ -6,20 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class HastaLoginActivity extends AppCompatActivity {
+public class EczaneGirisActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hasta_login);
+        setContentView(R.layout.activity_eczane_giris);
 
-        Button hasta = (Button)findViewById(R.id.tcGirisButon);
-
-        hasta.setOnClickListener(new View.OnClickListener() {
+        Button eczBilGir = (Button)findViewById(R.id.eczaneGirisButon);
+        eczBilGir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HastaLoginActivity.this, HastaActivity.class);
-                startActivity(intent);//bu bir denemedir
+                Intent intent = new Intent(EczaneGirisActivity.this, EczaneActivity.class);
+                startActivity(intent);
             }
         });
     }

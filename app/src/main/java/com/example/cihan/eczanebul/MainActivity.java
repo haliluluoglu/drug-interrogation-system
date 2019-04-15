@@ -15,13 +15,13 @@ public class MainActivity extends AppCompatActivity {
 
         Button doktor = (Button)findViewById(R.id.doktorButon);
         Button hasta = (Button)findViewById(R.id.hastaButon);
-        Button eczaci = (Button)findViewById(R.id.eczaciButon);
+        Button eczane = (Button)findViewById(R.id.eczaneButon);
 
 
         doktor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, DoktorLoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, DoktorGirisActivity.class);
                 startActivity(intent);
             }
         });
@@ -29,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
         hasta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, HastaLoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, HastaGirisActivity.class);
                 startActivity(intent);
             }
         });
 
-        eczaci.setOnClickListener(new View.OnClickListener() {
+        eczane.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, EczaneLoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, EczaneGirisActivity.class);
                 startActivity(intent);
             }
         });
