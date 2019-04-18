@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,6 +23,14 @@ public class Database extends SQLiteOpenHelper {
     public static final String HASTA_TABLE="Hasta";
     public static final String DOKTOR_TABLE="Doktor";
     public static final String NOBETCI_TABLE="Nobetci";
+    private static Database instance=null;
+
+    public static Database getInstance(Context context){
+        if(instance==null){
+            instance = new Database(context);
+        }
+        return instance;
+    }
 
     public Database(Context context){
         super(context,"EczaneBul.db",null,1);
@@ -29,7 +38,7 @@ public class Database extends SQLiteOpenHelper {
 
         //ilacGir("parol",1,10.0f,50,0);
         //eczaneGir(1,"Kaya Eczanesi","Esenler","05559997766",50.0f,40.0f);
-        // doktorGir(1,"Hakan","Ersoy","tcbc");
+        //doktorGir(1,"Hakan","Ersoy","tcbc");
         //hastaBilgiGir("Ahmet","Demir",1);
         //doktorReceteHazirla(new String[]{"parol"},new int[]{50},1);
         //eczaneStokSorgula("Kaya Eczanesi");
@@ -52,6 +61,7 @@ public class Database extends SQLiteOpenHelper {
 
         create_hastaid="CREATE TABLE HASTAID ( "+
                 "ID INT, "+
+                "SIFRE VARCHAR(30), "+
                 "ISIM VARCHAR(30), "+
                 "SOYISIM VARCHAR(30), " +
                 "CONSTRAINT PRIM PRIMARY KEY (ID));";
@@ -73,6 +83,7 @@ public class Database extends SQLiteOpenHelper {
 
         create_eczane="CREATE TABLE " + ECZANE_TABLE + " ( "+
                 "ID INT, "+
+                "SIFRE VARCHAR(30), "+
                 "ISIM VARCHAR(30), "+
                 "ADRES VARCHAR(30), " +
                 "TELEFON VARCHAR(30), "+
@@ -141,10 +152,10 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(String.format(insert,id,isim,mg,kul));
     }
 
-    public void eczaneGir(int id,String isim,String adres,String telefon,float koordx,float koordy){
+    public void eczaneGir(int id,String sifre,String isim,String adres,String telefon,float koordx,float koordy){
         SQLiteDatabase db = getWritableDatabase();
-        String insert="insert into Eczane values(%d,'%s','%s','%s',%f,%f);";
-        db.execSQL(String.format(insert,id,isim,adres,telefon,koordx,koordy));
+        String insert="insert into Eczane values(%d,'%s','%s','%s','%s',%f,%f);";
+        db.execSQL(String.format(insert,id,sifre,isim,adres,telefon,koordx,koordy));
     }
 
     public void hastaGecmisGir(String isim,String soyisim,int id,String ilacisim,int mg){
@@ -153,10 +164,10 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(String.format(insert,isim,soyisim,id,ilacisim,mg));
     }
 
-    public void hastaBilgiGir(String isim,String soyisim,int id){
+    public void hastaBilgiGir(String isim,String sifre,String soyisim,int id){
         SQLiteDatabase db = getWritableDatabase();
-        String insert="insert into HASTAID values(%d,'%s','%s');";
-        db.execSQL(String.format(insert,id,isim,soyisim));
+        String insert="insert into HASTAID values(%d,'%s','%s','%s');";
+        db.execSQL(String.format(insert,id,sifre,isim,soyisim));
     }
 
     public float dist(float x1,float y1,float x2,float y2){
@@ -211,12 +222,24 @@ public class Database extends SQLiteOpenHelper {
         return false;
     }
 
-    public boolean doktorIlacSorgula(String ilac){
+    public ArrayList<Integer> doktorIlacSorgula(String ilac){
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.query("Ilac",new String[]{"MG"},"ISIM='"+ilac+"'",null,null,null,null);
-        cursor.moveToFirst();
-        if(cursor.getCount()!=0)
+        boolean cont = cursor.moveToFirst();
+        ArrayList<Integer> list = new ArrayList<>();
+        while(cont){
+            list.add(cursor.getInt(0));
+            cont = cursor.moveToNext();
+        }
+        return list;
+    }
+
+    public boolean hastaSifreSorgula(String isim,String sifre){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query("HastaID",new String[]{"ID","SIFRE"},"EXISTS (Select * from doktor where ID='"+isim+"' and SIFRE='"+sifre+"')",null,null,null,null);
+        if(cursor.getCount()!=0){
             return true;
+        }
         return false;
     }
 
@@ -286,6 +309,15 @@ public class Database extends SQLiteOpenHelper {
         list.add(adder);
 
         return list;
+    }
+
+    public boolean eczaneSifreSorgula(String isim, String sifre){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query("Eczane",new String[]{"ID","SIFRE"},"EXISTS (Select * from doktor where ID='"+isim+"' and SIFRE='"+sifre+"')",null,null,null,null);
+        if(cursor.getCount()!=0){
+            return true;
+        }
+        return false;
     }
 
     public ArrayList<ArrayList<String>> eczaneStokSorgula(String isim){
