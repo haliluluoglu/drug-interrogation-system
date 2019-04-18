@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="204dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="tescilNo"
@@ -23,13 +23,13 @@
     <EditText
         android:id="@+id/tescilSifreText"
         android:layout_width="wrap_content"
-        android:layout_height="43dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="şifre"
-        android:inputType="textPersonName"
+        android:hint="Şifre"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tescilNoText" />
@@ -41,9 +41,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
-        android:text="Giriş Yap"
+        android:text="Giriş"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tescilSifreText" />
 
