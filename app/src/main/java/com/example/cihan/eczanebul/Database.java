@@ -163,13 +163,13 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(String.format(insert,id,sifre,isim,adres,telefon,koordx,koordy));
     }
 
-    public void hastaGecmisGir(String isim,String soyisim,int id,String ilacisim,int mg){
+    public void hastaGecmisGir(int id,String ilacisim,int mg){
         SQLiteDatabase db = getWritableDatabase();
         String insert="insert into Hasta values('%s','%s',%d,'%s',%d);";
-        db.execSQL(String.format(insert,isim,soyisim,id,ilacisim,mg));
+        db.execSQL(String.format(insert,null,null,id,ilacisim,mg));
     }
 
-    public void hastaBilgiGir(String isim,String sifre,String soyisim,int id){
+    public void hastaBilgiGir(String isim,String soyisim,String sifre,int id){
         SQLiteDatabase db = getWritableDatabase();
         String insert="insert into HASTAID values(%d,'%s','%s','%s');";
         db.execSQL(String.format(insert,id,sifre,isim,soyisim));

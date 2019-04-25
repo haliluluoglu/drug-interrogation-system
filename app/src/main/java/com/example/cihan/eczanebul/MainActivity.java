@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final Database database = Database.getInstance(MainActivity.this);
 
-        database.hastaBilgiGir("etkin", "kızıldağ", "1234", 2);
+       /* database.hastaBilgiGir("etkin", "kızıldağ", "1234", 2);
             database.hastaGecmisGir(2,"Parol", 500);
             database.hastaGecmisGir(2,"Cabral", 400);
             database.hastaGecmisGir(2,"Ongliza", 5);
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             database.hastaGecmisGir(6,"Galvusmet ",850);
             database.hastaGecmisGir(6,"Madecasol ",40000);
             database.hastaGecmisGir(6,"Refresh ",15);
+            */
 
         Button doktor = (Button)findViewById(R.id.doktorButon);
         Button hasta = (Button)findViewById(R.id.hastaButon);

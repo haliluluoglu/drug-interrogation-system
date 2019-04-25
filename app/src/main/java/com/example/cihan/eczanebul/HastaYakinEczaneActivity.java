@@ -2,11 +2,11 @@ package com.example.cihan.eczanebul;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.LinearLayoutManager;
 
 public class HastaYakinEczaneActivity extends AppCompatActivity {
 
