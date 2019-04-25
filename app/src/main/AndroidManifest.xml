@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".DoktorGirisActivity" />
-        <activity android:name=".HastaYakinEczaneActivity"></activity>
+        <activity android:name=".HastaYakinEczaneActivity" />
+        <activity android:name=".IlacDisiActivity"></activity>
     </application>
 
 </manifest>

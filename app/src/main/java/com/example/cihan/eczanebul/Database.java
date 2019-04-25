@@ -36,10 +36,15 @@ public class Database extends SQLiteOpenHelper {
         super(context,"EczaneBul.db",null,1);
         Log.d(TAG, "Database: created");
 
+        //ilacGir("Vicks",1,15.5f,300,1);
+        //ilacGir("Troysd",1,15.5f,360,1);
+        //ilacGir("cc",1,10.0f,11,0);
+        //eczaneGir(2,"ccc","Gözde Eczanesi","Kütahya","05425424254",100.0f,500.0f);
+
         //ilacGir("parol",1,10.0f,50,0);
-        //eczaneGir(1,"Kaya Eczanesi","Esenler","05559997766",50.0f,40.0f);
+        //eczaneGir(1,"ccc","Kaya Eczanesi","Esenler","05559997766",50.0f,40.0f);
         //doktorGir(1,"Hakan","Ersoy","tcbc");
-        //hastaBilgiGir("Ahmet","Demir",1);
+        //hastaBilgiGir("Ahmet","ccc","Demir",2);
         //doktorReceteHazirla(new String[]{"parol"},new int[]{50},1);
         //eczaneStokSorgula("Kaya Eczanesi");
 
@@ -97,7 +102,7 @@ public class Database extends SQLiteOpenHelper {
                 "FIYAT FLOAT, "+
                 "MG INT, " +
                 "ILAC_DISI INT, " +
-                "CONSTRAINT PRIM PRIMARY KEY (ISIM,ECZANE));";
+                "CONSTRAINT PRIM PRIMARY KEY (ISIM,MG));";
 
         create_recete="CREATE TABLE " + RECETE_TABLE + " ( "+
                 "ID INT, "+
@@ -213,10 +218,10 @@ public class Database extends SQLiteOpenHelper {
         //TODO girdiler veritabanindan alinacak
     }
 
-    public boolean doktorSifreSorgula(String kadi,String sifre){
+    public boolean doktorSifreSorgula(String kadi,String sifre) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query("Doktor",new String[]{"ID","SIFRE"},"EXISTS (Select * from doktor where ID='"+kadi+"' and SIFRE='"+sifre+"')",null,null,null,null);
-        if(cursor.getCount()!=0){
+        Cursor cursor = db.query("Doktor", new String[]{"ID", "SIFRE"}, "EXISTS (Select * from doktor where ID='" + kadi + "' and SIFRE='" + sifre + "')", null, null, null, null);
+        if (cursor.getCount() != 0) {
             return true;
         }
         return false;
@@ -236,7 +241,7 @@ public class Database extends SQLiteOpenHelper {
 
     public boolean hastaSifreSorgula(String isim,String sifre){
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query("HastaID",new String[]{"ID","SIFRE"},"EXISTS (Select * from doktor where ID='"+isim+"' and SIFRE='"+sifre+"')",null,null,null,null);
+        Cursor cursor = db.query("HastaID",new String[]{"ID","SIFRE"},"EXISTS (Select * from hastaid where ID='"+isim+"' and SIFRE='"+sifre+"')",null,null,null,null);
         if(cursor.getCount()!=0){
             return true;
         }
@@ -257,24 +262,27 @@ public class Database extends SQLiteOpenHelper {
         return nobetciler;
     }
 
-    public ArrayList<ArrayList<String>> hastaIlacDisiSorgula(String isim){
+    public ArrayList<ArrayList<String>> hastaIlacDisiSorgula(){
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query("Ilac",new String[]{"ECZANE","ILAC_DISI"},"ILAC_DISI=1",null,null,null,null);
+        Cursor cursor = db.query("Ilac",new String[]{"ECZANE","ISIM","MG"},"ILAC_DISI=1",null,null,null,null);
         boolean cont = cursor.moveToFirst();
         HashMap<Integer,Boolean> map = new HashMap<>();
         ArrayList<ArrayList<String>> list = new ArrayList<>();
         while(cont){
             int eczane=cursor.getInt(0);
-            if(!map.containsKey(eczane)){
+           // if(!map.containsKey(eczane)){
                 map.put(eczane,true);
                 Cursor cur = db.query("Eczane",new String[]{"ISIM","ADRES"},null,null,null,null,null);
                 cur.moveToFirst();
                 ArrayList<String> s = new ArrayList<>();
                 s.add(cur.getString(0));
                 s.add(cur.getString(1));
+                s.add(cursor.getString(1));
+                s.add(String.format("%d",cursor.getInt(2)));
                 list.add(s);
-            }
+            //}
             cont=cursor.moveToNext();
+            Log.d(TAG, "hastaIlacDisiSorgula: boyut= "+list.size());
         }
         return list;
     }
@@ -313,7 +321,7 @@ public class Database extends SQLiteOpenHelper {
 
     public boolean eczaneSifreSorgula(String isim, String sifre){
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query("Eczane",new String[]{"ID","SIFRE"},"EXISTS (Select * from doktor where ID='"+isim+"' and SIFRE='"+sifre+"')",null,null,null,null);
+        Cursor cursor = db.query("Eczane",new String[]{"ID","SIFRE"},"EXISTS (Select * from eczane where ID='"+isim+"' and SIFRE='"+sifre+"')",null,null,null,null);
         if(cursor.getCount()!=0){
             return true;
         }
@@ -358,5 +366,16 @@ public class Database extends SQLiteOpenHelper {
             db.execSQL("DELETE FROM ILAC WHERE ID="+id);
             cont = cursor.moveToNext();
         }
+    }
+
+    public ArrayList<String> eczaneAdresTelefon(String isim){
+        ArrayList<String> list = new ArrayList();
+        list.add(isim);
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query("Eczane",new String[]{"ADRES","TELEFON"},"ISIM='"+isim+"'",null,null,null,null);
+        cursor.moveToFirst();
+        list.add(cursor.getString(0));
+        list.add(cursor.getString(1));
+        return list;
     }
 }
