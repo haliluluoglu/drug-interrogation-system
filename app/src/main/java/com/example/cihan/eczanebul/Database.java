@@ -157,7 +157,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(String.format(insert,id,isim,mg,kul));
     }
 
-    public void eczaneGir(int id,String sifre,String isim,String adres,String telefon,float koordx,float koordy){
+    public void eczaneGir(int id,String sifre,String isim,String adres,String telefon,double koordx,double koordy){
         SQLiteDatabase db = getWritableDatabase();
         String insert="insert into Eczane values(%d,'%s','%s','%s','%s',%f,%f);";
         db.execSQL(String.format(insert,id,sifre,isim,adres,telefon,koordx,koordy));
