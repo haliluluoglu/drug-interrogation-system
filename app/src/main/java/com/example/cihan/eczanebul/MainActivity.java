@@ -50,20 +50,20 @@ public class MainActivity extends AppCompatActivity {
         //DATABASE'DE VAR OLAN ECZANE ADLI VERİLER
 
         database.eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 00", 50.36, 70.34);
-        database.eczaneGir(1,"e001", "Yıldız Eczanesi", "Esenler", "0534 100 10 01", 10, 20);
-        database.eczaneGir(1,"e001", "Fatih Eczanesi", "Fatih", "0534 100 10 02", 32.1, 34.34);
-        database.eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 03", 25, 75);
-        database.eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 04", 67.89, 78.09);
-        database.eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 05", 37.45, 34.76);
-        database.eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 06", 80, 45.7);
-        database.eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 07", 90, 43.35);
-        database.eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 08", 16.67, 12);
-        database.eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 09", 59, 65);
-        database.eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 10", 50.36, 70.34);
-        database.eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 11", 50.36, 70.34);
-        database.eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 12", 50.36, 70.34);
-        database.eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 13", 50.36, 70.34);
-        database.eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 14", 50.36, 70.34);
+        database.eczaneGir(2,"e002", "Yıldız Eczanesi", "Esenler", "0534 100 10 01", 10, 20);
+        database.eczaneGir(3,"e003", "Fatih Eczanesi", "Fatih", "0534 100 10 02", 32.1, 34.34);
+        database.eczaneGir(4,"e004", "Işıl Eczanesi", "Kadıköy", "0534 100 10 03", 25, 75);
+        database.eczaneGir(5,"e005", "Nilgün Eczanesi", "Pendik", "0534 100 10 04", 67.89, 78.09);
+        database.eczaneGir(6,"e006", "Bağcılar Merkez Eczanesi", "Bağcılar", "0534 100 10 05", 37.45, 34.76);
+        database.eczaneGir(7,"e007", "Doğan Eczanesi", "Bağcılar", "0534 100 10 06", 80, 45.7);
+        database.eczaneGir(8,"e008", "Çelikel Eczanesi", "Gaziosmanpaşa", "0534 100 10 07", 90, 43.35);
+        database.eczaneGir(9,"e009", "Arya Eczanesi", "Yeditepe", "0534 100 10 08", 16.67, 12);
+        database.eczaneGir(10,"e010", "Tülin Eczanesi", "Şişli", "0534 100 10 09", 59, 65);
+        database.eczaneGir(11,"e011", "Yeni Eylül Eczanesi", "Mecidiyeköy", "0534 100 10 10", 65, 70);
+        database.eczaneGir(12,"e012", "Başar Eczanesi", "Tuzla", "0534 100 10 11", 19, 25.90);
+        database.eczaneGir(13,"e013", "Referans Eczanesi", "Beşiktaş", "0534 100 10 12", 05.06, 70.34);
+        database.eczaneGir(14,"e014", "Avis Eczanesi", "Zincirlikuyu", "0534 100 10 13", 13.67, 55.5);
+        database.eczaneGir(15,"e015", "Seyhun Eczanesi", "Zeytinburnu", "0534 100 10 14", 61.21, 45.3);
 
 
 
