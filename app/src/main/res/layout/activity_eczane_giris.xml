@@ -14,7 +14,7 @@
         android:layout_marginTop="204dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="KullanıcıAdı"
+        android:hint="Kullanıcı adı"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
