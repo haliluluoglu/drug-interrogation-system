@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class HastaGirisActivity extends AppCompatActivity {
 
     @Override
@@ -24,9 +26,30 @@ public class HastaGirisActivity extends AppCompatActivity {
                 String isim=((EditText)findViewById(R.id.tcNumaraText)).getText().toString();
                 String sifre=((EditText)findViewById(R.id.tcSifreText)).getText().toString();
 
-                if(database.hastaSifreSorgula(isim,sifre)) {
-                    Intent intent = new Intent(HastaGirisActivity.this, HastaActivity.class);
+                if(database.hastaSifreSorgula(isim,sifre)&&getIntent().getStringExtra("mode").equals("ILAC_DISI")) {
+                    ArrayList<ArrayList<String>> list=database.hastaIlacDisiSorgula(getIntent().getStringExtra("name"));
+                    Intent intent = new Intent(HastaGirisActivity.this, IlacDisiActivity.class);
+                    intent.putExtra("list",list);
+
                     startActivity(intent);//bu bir denemedir
+                }
+
+                if(database.hastaSifreSorgula(isim,sifre)&&getIntent().getStringExtra("mode").equals("RECETE_BUL")) {
+                    int hastaid=Integer.parseInt(isim);
+                    float x=getIntent().getFloatExtra("x",-1.0f),y=getIntent().getFloatExtra("y",-1.0f);
+                    ArrayList<String> list=database.hastaIlacNerede(getIntent().getIntExtra("id",-1),hastaid,x,y);
+                    Intent intent = new Intent(HastaGirisActivity.this, HastaReceteActivity.class);
+                    intent.putExtra("list",list);
+                    startActivity(intent);//bu bir denemedir
+                }
+
+                if(database.hastaSifreSorgula(isim,sifre)&&getIntent().getStringExtra("mode").equals("TUM_RECETELER")) {
+                    int hastaid=Integer.parseInt(isim);
+                    Intent intent=new Intent(HastaGirisActivity.this,TumRecetelerActivity.class);
+                    intent.putExtra("id",hastaid);
+                    intent.putExtra("x",getIntent().getFloatExtra("x",-1.0f));
+                    intent.putExtra("y",getIntent().getFloatExtra("y",-1.0f));
+                    startActivity(intent);
                 }
             }
         });

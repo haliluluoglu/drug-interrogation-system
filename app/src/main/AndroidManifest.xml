@@ -23,7 +23,11 @@
         </activity>
         <activity android:name=".DoktorGirisActivity" />
         <activity android:name=".HastaYakinEczaneActivity" />
-        <activity android:name=".IlacDisiActivity"></activity>
+        <activity android:name=".IlacDisiActivity" />
+        <activity android:name=".HastaReceteActivity" />
+        <activity android:name=".TumRecetelerActivity" />
+        <activity android:name=".ReceteDetayActivity" />
+        <activity android:name=".ReceteIlacGosterActivity"></activity>
     </application>
 
 </manifest>

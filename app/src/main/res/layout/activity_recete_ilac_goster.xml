@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EczaneActivity">
+    tools:context="com.example.cihan.eczanebul.ReceteIlacGosterActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/eczaneStokRecyclerView"
+        android:id="@+id/ilacGosterRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"

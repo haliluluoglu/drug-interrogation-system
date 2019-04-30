@@ -6,4 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".DoktorActivity">
 
+    <Button
+        android:id="@+id/doktorIlacKontrol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Kontrol et"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doktorIlac" />
+
+    <TextView
+        android:id="@+id/doktorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="TextView" />
+
+    <EditText
+        android:id="@+id/doktorIlac"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="İlaç İsmi"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doktorTextView" />
+
+    <EditText
+        android:id="@+id/doktorMG"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="İlaç MG"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/doktorIlac"
+        app:layout_constraintTop_toBottomOf="@+id/doktorTextView" />
 </android.support.constraint.ConstraintLayout>

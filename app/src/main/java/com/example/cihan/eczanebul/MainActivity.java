@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         hasta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, HastaGirisActivity.class);
+                Intent intent = new Intent(MainActivity.this, HastaActivity.class);
                 startActivity(intent);
             }
         });

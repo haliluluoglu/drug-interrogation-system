@@ -27,6 +27,7 @@ public class EczaneGirisActivity extends AppCompatActivity {
 
                 if(database.eczaneSifreSorgula(isim,sifre)){
                     Intent intent = new Intent(EczaneGirisActivity.this, EczaneActivity.class);
+                    intent.putExtra("id",Integer.parseInt(isim));
                     startActivity(intent);
                 }
             }
