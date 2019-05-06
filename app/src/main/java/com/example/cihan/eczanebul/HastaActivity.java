@@ -32,6 +32,7 @@ public class HastaActivity extends AppCompatActivity {
         Button ilacDisiBul = (Button)findViewById(R.id.ilacDisiBul);
         Button hangiEczane = (Button)findViewById(R.id.hangiEczane);
         Button tumReceteler = (Button)findViewById(R.id.receteleriGoster);
+        Button nobetciEczaneBul = (Button)findViewById(R.id.nobetciEczaneBul);
 
         eczBul.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,9 +51,10 @@ public class HastaActivity extends AppCompatActivity {
                 EditText et=(EditText)findViewById(R.id.ilacDisiArama);
                 String put = et.getText().toString();
                 if(put!=null&&put.length()!=0) {
-                    Intent intent = new Intent(HastaActivity.this, HastaGirisActivity.class);
-                    intent.putExtra("name", put);
-                    intent.putExtra("mode","ILAC_DISI");
+                    ArrayList<ArrayList<String>> list=database.hastaIlacDisiSorgula(put);
+                    Intent intent = new Intent(HastaActivity.this, IlacDisiActivity.class);
+                    intent.putExtra("list",list);
+
                     startActivity(intent);
                 }
             }
@@ -76,6 +78,16 @@ public class HastaActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(HastaActivity.this,HastaGirisActivity.class);
                 intent.putExtra("mode","TUM_RECETELER");
+                intent.putExtra("x",koordx);
+                intent.putExtra("y",koordy);
+                startActivity(intent);
+            }
+        });
+
+        nobetciEczaneBul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HastaActivity.this,NobetciActivity.class);
                 intent.putExtra("x",koordx);
                 intent.putExtra("y",koordy);
                 startActivity(intent);

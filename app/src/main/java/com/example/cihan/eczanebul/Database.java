@@ -36,32 +36,89 @@ public class Database extends SQLiteOpenHelper {
         super(context,"EczaneBul.db",null,1);
         Log.d(TAG, "Database: created");
 
-        //eczaneGir(1,"ccc","Kaya Eczanesi","Esenler","05559997766",50.0f,40.0f);
-        //ilacGir("Vicks",1,15.5f,300,1,1);
-        //ilacGir("Troysd",1,15.5f,360,1,5);
-        //ilacGir("cc",1,10.0f,11,0,5);
-        //ilacGir("cc",2,10.0f,11,0,5);
-        //eczaneGir(2,"ccc","Gözde Eczanesi","Kütahya","05425424254",100.0f,500.0f);
 
-        //String ilaclar[] = new String[]{"parol","Vicks"};
-        //int mg[] = new int[]{50,300};
-        //doktorReceteHazirla(ilaclar,mg,2);
+        eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 00", 50.36f, 70.34f);
+        eczaneGir(2,"e002", "Yıldız Eczanesi", "Esenler", "0534 100 10 01", 10.0f, 20.0f);
+        eczaneGir(3,"e003", "Fatih Eczanesi", "Fatih", "0534 100 10 02", 32.1f, 34.34f);
+        eczaneGir(4,"e004", "Işıl Eczanesi", "Kadıköy", "0534 100 10 03", 25.0f, 75.0f);
+        eczaneGir(5,"e005", "Nilgün Eczanesi", "Pendik", "0534 100 10 04", 67.89f, 78.09f);
+        eczaneGir(6,"e006", "Bağcılar Merkez Eczanesi", "Bağcılar", "0534 100 10 05", 37.45f, 34.76f);
+        eczaneGir(7,"e007", "Doğan Eczanesi", "Bağcılar", "0534 100 10 06", 80.0f, 45.7f);
+        eczaneGir(8,"e008", "Çelikel Eczanesi", "Gaziosmanpaşa", "0534 100 10 07", 90.0f, 43.35f);
+        eczaneGir(9,"e009", "Arya Eczanesi", "Yeditepe", "0534 100 10 08", 16.67f, 12.0f);
+        eczaneGir(10,"e010", "Tülin Eczanesi", "Şişli", "0534 100 10 09", 59.0f, 65.0f);
+        eczaneGir(11,"e011", "Yeni Eylül Eczanesi", "Mecidiyeköy", "0534 100 10 10", 65.0f, 70.0f);
+        eczaneGir(12,"e012", "Başar Eczanesi", "Tuzla", "0534 100 10 11", 19.0f, 25.90f);
+        eczaneGir(13,"e013", "Referans Eczanesi", "Beşiktaş", "0534 100 10 12", 05.06f, 70.34f);
+        eczaneGir(14,"e014", "Avis Eczanesi", "Zincirlikuyu", "0534 100 10 13", 13.67f, 55.5f);
+        eczaneGir(15,"e015", "Seyhun Eczanesi", "Zeytinburnu", "0534 100 10 14", 61.21f, 45.3f);
 
-        //ilacGir("parol",2,10.0f,50,0,2);
-        //doktorGir(1,"Hakan","Ersoy","tcbc");
-        //hastaBilgiGir("Ahmet","Demir","ccc",2);
-        //doktorReceteHazirla(new String[]{"cc","Troysd"},new int[]{11,360},2);
-        //doktorReceteHazirla(new String[]{"cc"},new int[]{11},2,"26-04-2019");
-        //doktorReceteHazirla(new String[]{"Troysd"},new int[]{360},2,"27-04-2019");
-        //eczaneStokSorgula("Kaya Eczanesi");
+        hastaBilgiGir("Bahattin Cihan","Ünal","h001",1);
+        hastaBilgiGir("Yusuf Etkin","Kızıldağ","h002",2);
+        hastaBilgiGir("Halil İbrahim","Ulupınar","h003",3);
+        hastaBilgiGir("Ömer Muhammed","Demir","h004",4);
+        hastaBilgiGir("Aziz","Sancar","h005",5);
+        hastaBilgiGir("Gazi","Yaşargil","h006",6);
+        hastaBilgiGir("Ahmet Cem","Ersever","h007",7);
+        hastaBilgiGir("Orhan","Pamuk","h008",8);
+        hastaBilgiGir("Canan","Dağdeviren","h009",9);
+        hastaBilgiGir("Cahit","Arf","h010",10);
+        hastaBilgiGir("Yunus","Emre","h011",11);
+        hastaBilgiGir("Oğuz","Atay","h012",12);
+        hastaBilgiGir("Mete","Atatüre","h013",13);
+        hastaBilgiGir("Afet","İnan","h014",14);
+        hastaBilgiGir("Aziz","Nesin","h015",15);
+        hastaBilgiGir("Ali","Nesin","h016",16);
 
-//        ArrayList<ArrayList<String>> list = null;
-//        list = hastaReceteSorgula(1);
+        doktorGir(1,"Erşan","Kuneri","d001");
+        doktorGir(2,"Kemal","Demir","d002");
+        doktorGir(3,"Ayşe","Özkan","d003");
+        doktorGir(4,"Hüseyin","Aziret","d004");
+        doktorGir(5,"Bekir","Arslan","d005");
+        doktorGir(6,"Kadir","Zengin","d006");
+        doktorGir(7,"Muhsin","Aktaş","d007");
+        doktorGir(8,"Ahmet","Hisarlı","d008");
+        doktorGir(9,"Hatice","Ünal","d009");
+        doktorGir(10,"Betül","Sarıgül","d010");
+        doktorGir(11,"Burak","Okur","d011");
+        doktorGir(12,"Mahmut","Aslan","d012");
+        doktorGir(13,"Emel","Oğul","d013");
+        doktorGir(14,"Hülya","Kardemir","d014");
+        doktorGir(15,"Mehmet","Yazıcı","d015");
 
- /*       if(list!=null){
-            Log.d(TAG, "Database: "+list.get(0).get(0));
-        }
-*/
+        ilacGir("Parol",1,10.0f,500,0,5);
+        ilacGir("Parol",6,10.0f,500,0,5);
+        ilacGir("Parol",10,10.0f,500,0,5);
+        ilacGir("Parol",11,10.0f,500,0,5);
+        ilacGir("Parol",14,10.0f,500,0,5);
+        ilacGir("Cabral",2,30.0f,400,0,5);
+        ilacGir("Cabral",3,30.0f,400,0,5);
+        ilacGir("Cabral",5,30.0f,400,0,5);
+        ilacGir("Cabral",8,30.0f,400,0,5);
+        ilacGir("Cabral",9,30.0f,400,0,5);
+        ilacGir("Ongliza",4,20.0f,5,0,5);
+        ilacGir("Ongliza",6,20.0f,5,0,5);
+        ilacGir("Ongliza",7,20.0f,5,0,5);
+        ilacGir("Ongliza",10,20.0f,5,0,5);
+        ilacGir("Ongliza",15,20.0f,5,0,5);
+        ilacGir("Atacant",1,25.0f,8,0,5);
+        ilacGir("Atacant",6,25.0f,8,0,5);
+        ilacGir("Atacant",7,25.0f,8,0,5);
+        ilacGir("Atacant",11,25.0f,8,0,5);
+        ilacGir("Atacant",13,25.0f,8,0,5);
+        ilacGir("Sipragut",3,10.0f,5,0,5);
+        ilacGir("Sipragut",5,10.0f,5,0,5);
+        ilacGir("Sipragut",8,10.0f,5,0,5);
+        ilacGir("Sipragut",12,10.0f,5,0,5);
+        ilacGir("Sipragut",14,10.0f,5,0,5);
+
+        doktorReceteHazirla(new String[]{"Atacant","Parol"},new int[]{8,500},4,"06-05-2019");
+        doktorReceteHazirla(new String[]{"Sipragut"},new int[]{5},7,"06-05-2019");
+        doktorReceteHazirla(new String[]{"Atacant","Cabral"},new int[]{8,400},1,"06-05-2019");
+        doktorReceteHazirla(new String[]{"Ongliza","Parol","Cabral"},new int[]{5,500,400},12,"06-05-2019");
+        doktorReceteHazirla(new String[]{"Ongliza"},new int[]{5},15,"06-05-2019");
+
+        nobetciGir();
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
     }
@@ -143,9 +200,9 @@ public class Database extends SQLiteOpenHelper {
             db.execSQL(String.format(insert, isim, eczane, fiyat, mg, ilacdisi, adet));
         }
         else{
-            cursor.moveToFirst();
+            /*cursor.moveToFirst();
             String update = "update ilac set adet=%d where isim='%s' and mg=%d and eczane=%d";
-            db.execSQL(String.format(update,adet+cursor.getInt(2),isim,mg,eczane));
+            db.execSQL(String.format(update,adet+cursor.getInt(2),isim,mg,eczane));*/
         }
     }
 
@@ -173,14 +230,45 @@ public class Database extends SQLiteOpenHelper {
         int arr[]=new int[cursor.getCount()];
         for(int i=0;i<3;i++) {
             int offset=(int)(Math.random()*1000.0)%cursor.getCount();
-          /*while(arr[offset]==1)
+            while(arr[offset]==1)
                 offset=(int)(Math.random()*1000.0)%cursor.getCount();
-            arr[offset]=1;*/
+            arr[offset]=1;
             cursor.moveToFirst();
             cursor.move(offset);
             String insert = "insert into Nobetci values('%d');";
             db.execSQL(String.format(insert,cursor.getInt(0)));
         }
+    }
+
+    public ArrayList<String> nobetciBul(float x,float y){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query("Nobetci",null,null,null,null,null,null);
+        cursor.moveToFirst();
+
+        ArrayList<String> list = new ArrayList<>();
+        ArrayList<Float> distance = new ArrayList<>();
+        for(int i=0;i<3;i++){
+            Cursor cursor2 = db.query("Eczane",new String[]{"ISIM","KOORDX","KOORDY"},"ID="+cursor.getInt(0),null,null,null,null);
+            cursor2.moveToFirst();
+            distance.add(dist(x,y,cursor2.getFloat(1),cursor2.getFloat(2)));
+            ArrayList<String> adder = new ArrayList<>();
+            list.add(cursor2.getString(0));
+            cursor.moveToNext();
+        }
+
+        for(int i=0;i<3;i++){
+            for(int j=0;j<2;j++){
+                if(distance.get(j)>distance.get(j+1)){
+                    float h=distance.get(j);
+                    distance.set(j,distance.get(j+1));
+                    distance.set(j+1,h);
+                    String str=list.get(j);
+                    list.set(j,list.get(j+1));
+                    list.set(j+1,str);
+                }
+            }
+        }
+        return list;
     }
 
     public void receteGir(int id, String isim, int mg, int kul,String tarih){

@@ -26,13 +26,7 @@ public class HastaGirisActivity extends AppCompatActivity {
                 String isim=((EditText)findViewById(R.id.tcNumaraText)).getText().toString();
                 String sifre=((EditText)findViewById(R.id.tcSifreText)).getText().toString();
 
-                if(database.hastaSifreSorgula(isim,sifre)&&getIntent().getStringExtra("mode").equals("ILAC_DISI")) {
-                    ArrayList<ArrayList<String>> list=database.hastaIlacDisiSorgula(getIntent().getStringExtra("name"));
-                    Intent intent = new Intent(HastaGirisActivity.this, IlacDisiActivity.class);
-                    intent.putExtra("list",list);
 
-                    startActivity(intent);//bu bir denemedir
-                }
 
                 if(database.hastaSifreSorgula(isim,sifre)&&getIntent().getStringExtra("mode").equals("RECETE_BUL")) {
                     int hastaid=Integer.parseInt(isim);
