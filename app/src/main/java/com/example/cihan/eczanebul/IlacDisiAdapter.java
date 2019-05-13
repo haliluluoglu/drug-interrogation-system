@@ -36,11 +36,13 @@ public class IlacDisiAdapter extends RecyclerView.Adapter<IlacDisiAdapter.ViewHo
         ArrayList<String> insert = list.get(position);
         holder.eczAdi.setText(insert.get(0));
         holder.eczAdres.setText(insert.get(1));
-        holder.ilacIsim.setText(insert.get(2));
+        holder.ilacIsim.setText(insert.get(2)+" tl");
     }
 
     @Override
     public int getItemCount() {
+        if(list==null)
+            return 0;
         return list.size();
     }
 

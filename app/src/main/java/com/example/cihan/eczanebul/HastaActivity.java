@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class HastaActivity extends AppCompatActivity {
     private static final String TAG = "HastaActivity";
@@ -21,6 +22,8 @@ public class HastaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hasta);
+
+
         database = Database.getInstance(HastaActivity.this);
         koordx=1000.0f*(float)Math.random();
         koordy=1000.0f*(float)Math.random();

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EczaneBul</string>
+    <string name="pref_locale">en</string>
 </resources>

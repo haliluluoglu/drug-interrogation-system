@@ -1,6 +1,7 @@
 package com.example.cihan.eczanebul;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -8,7 +9,9 @@ import android.util.Log;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 
 /**
  * Created by cihan on 14.04.2019.
@@ -35,7 +38,6 @@ public class Database extends SQLiteOpenHelper {
     public Database(Context context){
         super(context,"EczaneBul.db",null,1);
         Log.d(TAG, "Database: created");
-
 
         eczaneGir(1,"e001", "Türkiye Eczanesi", "Beşiktaş", "0534 100 10 00", 50.36f, 70.34f);
         eczaneGir(2,"e002", "Yıldız Eczanesi", "Esenler", "0534 100 10 01", 10.0f, 20.0f);
@@ -111,13 +113,22 @@ public class Database extends SQLiteOpenHelper {
         ilacGir("Sipragut",8,10.0f,5,0,5);
         ilacGir("Sipragut",12,10.0f,5,0,5);
         ilacGir("Sipragut",14,10.0f,5,0,5);
+        ilacGir("Troysd",1,5.0f,-1,1,5);
+        ilacGir("Troysd",3,5.5f,-1,1,5);
+        ilacGir("Troysd",6,4.5f,-1,1,5);
+        ilacGir("Troysd",11,6.5f,-1,1,5);
+        ilacGir("Troysd",14,4.5f,-1,1,5);
 
-        doktorReceteHazirla(new String[]{"Atacant","Parol"},new int[]{8,500},4,"06-05-2019");
-        doktorReceteHazirla(new String[]{"Sipragut"},new int[]{5},7,"06-05-2019");
-        doktorReceteHazirla(new String[]{"Atacant","Cabral"},new int[]{8,400},1,"06-05-2019");
-        doktorReceteHazirla(new String[]{"Ongliza","Parol","Cabral"},new int[]{5,500,400},12,"06-05-2019");
-        doktorReceteHazirla(new String[]{"Ongliza"},new int[]{5},15,"06-05-2019");
-
+        if(!receteYazdimmi()) {
+            doktorReceteHazirla(new String[]{"Atacant", "Parol"}, new int[]{8, 500}, 4, "06-05-2019");
+            doktorReceteHazirla(new String[]{"Sipragut"}, new int[]{5}, 7, "06-05-2019");
+            doktorReceteHazirla(new String[]{"Atacant", "Cabral"}, new int[]{8, 400}, 1, "06-05-2019");
+            doktorReceteHazirla(new String[]{"Ongliza", "Parol", "Cabral"}, new int[]{5, 500, 400}, 12, "06-05-2019");
+            doktorReceteHazirla(new String[]{"Ongliza"}, new int[]{5}, 15, "06-05-2019");
+            receteSatinAl(1, "ATACANT");
+            receteSatinAl(1, "PAROL");
+            receteSatinAl(4, "ONGLIZA");
+        }
         nobetciGir();
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
@@ -125,6 +136,7 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
         String create_eczane,create_hastaid,create_recete,create_doktor,create_ilac,create_nobetci;
         Log.d(TAG, "onCreate: starts");
 
@@ -189,7 +201,13 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
-
+    public boolean receteYazdimmi(){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query("RECETE",null,null,null,null,null,null);
+        if(cursor.getCount()==0)
+            return false;
+        return true;
+    }
 
     public void ilacGir(String isim, int eczane, float fiyat, int mg, int ilacdisi,int adet) {
         SQLiteDatabase db = getWritableDatabase();
@@ -416,12 +434,10 @@ public class Database extends SQLiteOpenHelper {
 
         boolean cont = cursor.moveToFirst();
         Log.d(TAG, "hastaIlacDisiSorgula: "+cursor.getCount()+" "+ilac);
-        HashMap<Integer,Boolean> map = new HashMap<>();
+
         ArrayList<ArrayList<String>> list = new ArrayList<>();
         while(cont){
             int eczane=cursor.getInt(0);
-           // if(!map.containsKey(eczane)){
-                map.put(eczane,true);
                 Cursor cur = db.query("Eczane",new String[]{"ISIM","ADRES"},"ID="+eczane,null,null,null,null);
                 cur.moveToFirst();
                 ArrayList<String> s = new ArrayList<>();
@@ -429,13 +445,14 @@ public class Database extends SQLiteOpenHelper {
                 s.add(cur.getString(1));
                 s.add(String.format("%.2f",cursor.getFloat(1)));
                 list.add(s);
-            //}
             cont=cursor.moveToNext();
             Log.d(TAG, "hastaIlacDisiSorgula: boyut= "+list.size());
         }
         for(int i=0;i<list.size();i++){
             for(int j=0;j<list.size()-1;j++){
-                if(Float.parseFloat(list.get(j).get(2))>Float.parseFloat(list.get(j+1).get(2))){
+                String num1[] = list.get(j).get(2).split(",");
+                String num2[] = list.get(j+1).get(2).split(",");
+                if(Float.parseFloat(num1[0]+"."+num1[0])>Float.parseFloat(num2[0]+"."+num2[1])){
                     ArrayList<String> str = list.get(j);
                     list.set(j,list.get(j+1));
                     list.set(j+1,str);
@@ -613,10 +630,16 @@ public class Database extends SQLiteOpenHelper {
         return cursor.getString(0);
     }
 
-    public String receteSatinAlinma(int id){
+    public String receteSatinAlinma(int id,String isim){
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query(true,"RECETE",new String[]{"SATIN_AL_TARIH"},"ID="+id,null,null,null,null,null);
+        Cursor cursor = db.query(true,"RECETE",new String[]{"SATIN_AL_TARIH"},"ID="+id+" and ILAC='"+isim+"'",null,null,null,null,null);
         cursor.moveToFirst();
         return cursor.getString(0);
+    }
+
+    public void receteSatinAl(int id,String isim){
+        SQLiteDatabase db = getWritableDatabase();
+        String tarih[] = Calendar.getInstance().getTime().toString().split(" ");
+        db.execSQL("update RECETE set SATIN_AL_TARIH='"+tarih[2]+"-"+tarih[1]+"-"+tarih[5]+"' where id="+id+" and ilac='"+isim+"'");
     }
 }

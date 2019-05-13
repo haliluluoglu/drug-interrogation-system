@@ -16,6 +16,7 @@ public class HastaGirisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hasta_giris);
 
+
         Button hasta = (Button)findViewById(R.id.tcGirisButon);
 
         final Database database = Database.getInstance(HastaGirisActivity.this);

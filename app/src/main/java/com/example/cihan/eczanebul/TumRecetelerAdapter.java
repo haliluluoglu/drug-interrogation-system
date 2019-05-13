@@ -58,6 +58,8 @@ public class TumRecetelerAdapter extends RecyclerView.Adapter<TumRecetelerAdapte
 
     @Override
     public int getItemCount() {
+        if(list==null)
+            return 0;
         return list.size();
     }
 

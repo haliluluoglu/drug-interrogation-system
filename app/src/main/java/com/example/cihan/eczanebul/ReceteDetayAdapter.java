@@ -43,8 +43,11 @@ public class ReceteDetayAdapter extends RecyclerView.Adapter<ReceteDetayAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         final String put[]=list.get(position+1).split(",");
         holder.ilacAdi.setText(put[0]);
-        holder.ilacMg.setText(put[1]+"MG");
-        String str=database.receteSatinAlinma(num);
+        if(!put[1].equals("-1"))
+            holder.ilacMg.setText(put[1]+"MG");
+        else
+            holder.ilacMg.setText("İlaç Dışı Ürün");
+        String str=database.receteSatinAlinma(num,put[0]);
         if(str==null||str.length()==0||str.equals("null"))
                holder.Tarih.setText("İlaç alınmadı");
         else
@@ -65,6 +68,8 @@ public class ReceteDetayAdapter extends RecyclerView.Adapter<ReceteDetayAdapter.
 
     @Override
     public int getItemCount() {
+        if(list == null)
+            return 0;
         return list.size()-1;
     }
 

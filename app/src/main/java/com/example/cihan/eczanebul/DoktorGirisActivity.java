@@ -18,6 +18,7 @@ public class DoktorGirisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doktor_giris);
 
+
         final Database database = Database.getInstance(DoktorGirisActivity.this);
 
         Button dokBilGir = (Button)findViewById(R.id.doktorGirisButon);

@@ -13,6 +13,7 @@ public class ReceteIlacGosterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recete_ilac_goster);
+
         database=Database.getInstance(this);
 
         float x=getIntent().getFloatExtra("x",-1.0f),y=getIntent().getFloatExtra("y",-1.0f);

@@ -42,6 +42,8 @@ public class EczaneAdapter extends RecyclerView.Adapter<EczaneAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
+        if(list == null)
+            return 0;
         return list.size();
     }
 

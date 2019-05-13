@@ -35,12 +35,17 @@ public class EczaneStokAdapter extends RecyclerView.Adapter<EczaneStokAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.isim.setText("İlaç İsmi= "+list.get(position).get(0));
-        holder.mg.setText(list.get(position).get(1)+" MG");
+        if(list.get(position).get(1).equals("-1"))
+            holder.mg.setText("İlaç Dışı Ürün");
+        else
+            holder.mg.setText(list.get(position).get(1)+" MG");
         holder.adet.setText(list.get(position).get(2)+" Adet");
     }
 
     @Override
     public int getItemCount() {
+        if(list == null)
+            return 0;
         return list.size();
     }
 

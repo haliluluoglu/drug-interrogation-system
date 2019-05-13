@@ -13,6 +13,7 @@ public class EczaneActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eczane);
+
         Database database = Database.getInstance(this);
         ArrayList<ArrayList<String>> list = database.eczaneStokSorgula(getIntent().getIntExtra("id",-1));
 
